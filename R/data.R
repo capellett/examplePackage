@@ -1,5 +1,5 @@
 # How to properly include data for users of a package:
-# save data in data/
+# save data in data/ . You can use this function to do that: usethis::use_data(data)
 # document the name of the dataset and save it in R/
 
 #' @title A sample example of a very good dataset.
@@ -18,7 +18,7 @@
 ## Instead, you can save them in R/sysdata.rda.
 ## devtools::use_data(data, internal=TRUE)
 ## include code used to generate internal data in data-raw/
-## Objects in R/sysdata.rda are not exported (they shouldn’t be),
+## Objects in R/sysdata.rda are not exported,
 ## so they don’t need to be documented.
 ## They’re only available inside your package.
 
@@ -27,7 +27,7 @@
 ## level directory of the package when the package is installed.
 ## (so they can’t have names like R/ or DESCRIPTION).
 ## To refer to files in inst/extdata (whether installed or not):
-# system.file("extdata", "example.csv", package = "WaterPlanningTools",
+# system.file("extdata", "example.csv", package = "examplePackage",
 #             mustWork=TRUE) # throws error if file is not found.
 ## [1] "/home/user/R/Library/WaterPlanningTools/extdata/example.csv"
 
@@ -48,14 +48,3 @@
 
 ## always include LazyData: true in your DESCRIPTION.
 ## devtools::create() does this for you.
-
-## Often, the data you include in data/ is a cleaned up
-## version of raw data you’ve gathered from elsewhere.
-## I highly recommend taking the time to include the code
-## used to do this in the source version of your package.
-## This will make it easy for you to update or reproduce
-## your version of the data. I suggest that you put this
-## code in data-raw/.
-## You don’t need it in the bundled version of your package,
-## so also add it to .Rbuildignore. Do all this in one step with:
-# devtools::use_data_raw(example_dataset)

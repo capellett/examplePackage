@@ -10,7 +10,7 @@
 #'   ...
 #' }
 #' @source I found it on the floor.
-"exampleData"
+"example_data"
 
 ## Save internal data for functions in R/sysdata.rda
 ## devtools::use_data(data, internal=TRUE)

@@ -1,36 +1,75 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "examplePackage: a template for writing packages in R."
+author: "C A Pellett"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{examplePackage}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include = FALSE}
+## The various macros in the `vignette` section of 
+## the metadata block above are required in order to 
+## instruct R how to build the vignette. 
+
+## The `title` field and the `\VignetteIndexEntry` 
+## should be consistent with your project.
+
+## The `html_vignette` output type provides a custom style sheet 
+## (and tweaks some options) to ensure that the resulting html is 
+## as small as possible. 
+
+## The `html_vignette` format:
+## - Never uses retina figures
+## - Has a smaller default figure size
+## - Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-If you write a nice vignette, consider submitting it to the Journal of Statistical Software or The R Journal. 
+If you write a nice vignette, consider submitting it to the Journal of 
+Statistical Software or The R Journal. 
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+This vignette is long form documentation of the examplePackage R package. 
+Because this document is part of the distribution of the package, it needs to 
+be compact. Larger components of a package can be shared on a project website.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+The design goal of the examplePackage is to provide a bare-bones template 
+that package developers can use to get started on a project. The material in 
+examplePackage is meant to exemplify best practices when using devtools and
+roxygen2 to create R packages. 
 
-## Vignette Info
+R packages are organized in a specific way so that they can be readily shared 
+among R users. Organizing a project as an R package has many advantages, but 
+the specific requirements of package development are a barrier for beginning
+developers. Fortunately, tools such as the devtools package, the roxygen2 
+package, and the RStudio integrated development environment (IDE) can be used to
+automate some of the tasks of package development and documentation. One way the
+process is streamlined by these tools is that almost all of the editing required
+by the developer takes place in R files located in the R folder. 
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+In some cases, packages include data preparation scripts, which should be saved 
+in the data-raw folder. 
+
+This vignette is rendered from a .Rmd file located in the vignettes folder.
+
+The README.md file shows up on the front page of the github (or bitbucket) 
+repository. It should be edited as well.
+
+Files in the test folder are probably edited also, but I haven't gotten there 
+yet. Tests are important to better ensure the quality of the package and prevent
+bugs from accumulating as the code is updated.
+
 
 ## Styles
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+The `html_vignette` template includes a basic CSS theme. To override this theme 
+you can specify your own CSS in the document metadata as follows:
 
     output: 
       rmarkdown::html_vignette:
@@ -38,7 +77,8 @@ The `html_vignette` template includes a basic CSS theme. To override this theme 
 
 ## Figures
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+The figure sizes have been customised so that you can easily put two images 
+side-by-side. 
 
 ```{r, fig.show='hold'}
 plot(1:10)
@@ -51,11 +91,13 @@ You can enable figure captions by `fig_caption: yes` in YAML:
       rmarkdown::html_vignette:
         fig_caption: yes
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+Then you can use the chunk option `fig.cap = "Your figure caption."` 
+in **knitr**.
 
 ## More Examples
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+You can write math expressions, e.g. $Y = X\beta + \epsilon$, 
+footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
 
 ```{r, echo=FALSE, results='asis'}
 knitr::kable(head(mtcars, 10))

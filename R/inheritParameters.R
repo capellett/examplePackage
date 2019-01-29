@@ -6,19 +6,15 @@
 # function, or another package, via @inheritParams package::function.
 # For example the following documentation:
 
-#' @param a This is the first argument
-foo <- function(a) a + 10
+#' @title foo a thing
+#' @param a_thing This is the first argument
+example_foo <- function(a_thing) a_thing + 10
 
-#' @param b This is the second argument
+#' @title bar two things
+#' @param another_thing This is the second argument
 #' @inheritParams foo
-bar <- function(a, b) {
+example_bar <- function(a_thing, another_thing) {
   foo(a) * 10
 }
 
-## is equivalent to
 
-#' @param a This is the first argument
-#' @param b This is the second argument
-bar <- function(a, b) {
-  foo(a) * 10
-}
